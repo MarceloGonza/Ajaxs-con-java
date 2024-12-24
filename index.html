@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejercicio Ajaxs con JS</title>
+  </head>
+  <body>
+    <button id="boton">Cargar sitio</button>
+
+    <div id="response"></div>
+
+    <script>
+      function ajaxs() {
+        const http = new XMLHttpRequest();
+        const url = "http://127.0.0.1:5500/uno.html";
+
+        http.onreadystatechange = function () {
+          if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("response").innerHTML = this.responseText;
+          }
+        };
+
+        http.open("GET", url);
+        http.send();
+      }
+
+      document.getElementById("boton").addEventListener("click", function () {
+        ajaxs();
+      });
+    </script>
+  </body>
+</html>
